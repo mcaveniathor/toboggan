@@ -1,6 +1,17 @@
 # toboggan
 
 [![Rust Report Card](https://rust-reportcard.xuri.me/badge/github.com/mcaveniathor/toboggan)](https://rust-reportcard.xuri.me/report/github.com/mcaveniathor/toboggan)
+## Description
+Toboggan is an RPC-based key/value database client and server built on Google's tarpc library and the sled embedded database. RPC requests can be sent using the client CLI or by leveraging the `toboggan-lib` crate's client stubs to integrate it into your own Rust program. At time of writing, the following operations are supported, with more to come soon.
+
+- NewTree
+- Insert
+- Get
+- GetTreeNames
+- GetID (returns a monotonically generated ID)
+
+## Installation
+`cargo install toboggan`
 
 ## Usage
 ### Server
