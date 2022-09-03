@@ -12,13 +12,14 @@ use std::{
     path::PathBuf,
     net::{IpAddr,Ipv6Addr},
 };
-use toboggan_lib::{
+use toboggan::{
     Database,
     Error,
     server::{
         DbServer,
     }
 };
+
 use futures::{future,StreamExt};
 
 #[derive(Subcommand)]
