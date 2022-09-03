@@ -8,7 +8,7 @@ description = "Key/value TCP-based database server and client cli based on the s
 homepage = "https://github.com/mcaveniathor/toboggan"
 repository = "https://github.com/mcaveniathor/toboggan"
 keywords = ["database", "kv", "key-value", "cli", "redis"]
-categories = ["database-implementation", "command-line-utilities"]
+categories = ["database-implementations", "command-line-utilities"]
 
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
