@@ -2,6 +2,14 @@
 name = "toboggan"
 version = "0.1.0"
 edition = "2021"
+license-file = "LICENSE"
+readme = "README.md"
+description = "Key/value TCP-based database server and client cli based on the sled embedded database"
+homepage = "https://github.com/mcaveniathor/toboggan"
+repository = "https://github.com/mcaveniathor/toboggan"
+keywords = ["database", "kv", "key-value", "cli", "redis"]
+categories = ["database-implementation", "command-line-utilities"]
+
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
@@ -9,7 +17,7 @@ edition = "2021"
 [workspace]
 
 [dependencies]
-toboggan-lib= { path = "toboggan-lib" }
+toboggan-lib = "0.1"
 sled = "0.34.7"
 futures = "0.3.23"
 tarpc = { version = "0.30.0", features = ["tokio1", "serde-transport", "tcp", "serde1", "serde-transport-bincode"] }
