@@ -9,7 +9,7 @@ documentation = "https://docs.rs/toboggan-lib"
 repository = "https://github.com/mcaveniathor/toboggan/tree/main/toboggan-lib"
 readme = "README.md"
 categories = ["database", "database-implementations"]
-keywords = ["rpc", "tarpc", "sled", "key-value", "database", "stub"]
+keywords = ["rpc", "tarpc", "sled", "key-value", "database",]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
