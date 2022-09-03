@@ -1,5 +1,7 @@
 # toboggan
 
+[![Rust Report Card](https://rust-reportcard.xuri.me/badge/github.com/mcaveniathor/toboggan)](https://rust-reportcard.xuri.me/report/github.com/mcaveniathor/toboggan)
+
 ## Usage
 ### Server
   You can view the helptext for the server cli using the command `cargo run --bin server -- -h`. 
