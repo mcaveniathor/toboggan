@@ -2,6 +2,14 @@
 name = "toboggan-lib"
 version = "0.1.0"
 edition = "2021"
+license = "MIT"
+description = "A library containing server implementations and client stubs for an RPC-based key/value store built on the sled embedded database."
+homepage = "https://github.com/mcaveniathor/toboggan/tree/main/toboggan-lib"
+documentation = "https://docs.rs/toboggan-lib"
+repository = "https://github.com/mcaveniathor/toboggan/tree/main/toboggan-lib"
+readme = "README.md"
+categories = ["database", "database-implementations"]
+keywords = ["rpc", "tarpc", "sled", "key-value", "database", "stub"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
