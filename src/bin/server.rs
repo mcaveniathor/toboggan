@@ -27,16 +27,15 @@ enum Command {
 }
 #[derive(Parser)]
 struct Args {
-    #[clap(short)]
-    /// Relative or absolute path to the database to be opened or created (default: <current
-    /// working directory>/db
-    db: Option<PathBuf>,
+    #[clap(short, default_value_os_t=PathBuf::from("db"))]
+    /// Relative or absolute path to the database to be opened or created
+    db: PathBuf,
     #[clap(short)]
     /// Port to listen on
     port: u16,
-    #[clap(short,long)]
-    /// IP address to listen on (default: ipv6 localhost)
-    address: Option<IpAddr>,
+    #[clap(short,long, default_value_t=IpAddr::V6(Ipv6Addr::LOCALHOST))]
+    /// IP address to listen on
+    address: IpAddr,
     #[clap(subcommand)]
     command: Command,
 }
@@ -53,9 +52,9 @@ fn main() -> Result<(), Error> {
 
 #[tokio::main]
 async fn run(args: Args) -> Result<(), Error> {
-    let path = args.db.unwrap_or(PathBuf::from("db"));
-    let dbserver = DbServer { db: Arc::new(sled::open(&path)?)};
-    let server_addr = (args.address.unwrap_or(IpAddr::V6(Ipv6Addr::LOCALHOST)), args.port);
+    let dbserver = DbServer { db: Arc::new(sled::open(&args.db)?)};
+    let server_addr = (args.address, args.port);
+    //let server_addr = (args.address.unwrap_or(IpAddr::V6(Ipv6Addr::LOCALHOST)), args.port);
     match args.command {
         Command::Tcp => {
             let mut listener = tarpc::serde_transport::tcp::listen(&server_addr, Bincode::default).await?;

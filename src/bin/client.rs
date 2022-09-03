@@ -15,7 +15,7 @@ enum Command {
     /// Insert a value into the database, optionally into the named tree
     Insert {
         #[clap(short,long)]
-        /// The tree to insert into, the default tree if not provided
+        /// The tree to insert into, the default (unnamed) tree if not provided
         tree: Option<String>,
         #[clap(short,long)]
         key: String,
@@ -31,9 +31,9 @@ struct Args {
     #[clap(short)]
     /// Port to connect on
     port: u16,
-    #[clap(short,long)]
-    /// IP address to connect to (default: ipv6 localhost)
-    address: Option<IpAddr>,
+    #[clap(short,long, default_value_t=IpAddr::V6(Ipv6Addr::LOCALHOST))]
+    /// IP address to connect to
+    address: IpAddr,
     #[clap(subcommand)]
     command: Command,
 }
@@ -49,7 +49,7 @@ fn main() -> Result<(), Error> {
 #[tokio::main]
 async fn run() -> Result<(),  Error> {
     let args = Args::parse();
-    let server_address = (args.address.unwrap_or(IpAddr::V6(Ipv6Addr::LOCALHOST)), args.port);
+    let server_address = (args.address, args.port);
     let transport = tarpc::serde_transport::tcp::connect(server_address, Bincode::default);
     let client = DatabaseClient::new(client::Config::default(), transport.await?).spawn();
     match args.command {
