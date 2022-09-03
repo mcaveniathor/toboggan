@@ -1,6 +1,6 @@
 [package]
 name = "toboggan"
-version = "0.1.0"
+version = "0.1.01"
 edition = "2021"
 license-file = "LICENSE"
 readme = "README.md"
