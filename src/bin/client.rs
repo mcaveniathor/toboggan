@@ -39,7 +39,19 @@ pub enum Command {
         /// The key to be removed
         #[clap(short,long)]
         key: String,
-    }
+    },
+
+    /// Retrieve a value from the database
+    Get {
+        #[clap(short,long)]
+        /// The tree to look in, the default (unnamed) tree if not provided
+        tree: Option<String>,
+        /// The key to be removed
+        #[clap(short,long)]
+        key: String,
+    },
+
+
 }
 #[derive(Parser)]
 struct CliArgs {
@@ -113,7 +125,7 @@ async fn run() -> Result<(),  Error> {
         },
         Command::Remove { tree, key } => {
             let prev = async move {
-                let resp = client.remove(context::current(), key.as_bytes().to_vec(), tree).await;
+                let resp = client.remove(context::current(), tree, key.as_bytes().to_vec()).await;
                 resp
             }
             .instrument(tracing::debug_span!("Remove"))
@@ -126,8 +138,19 @@ async fn run() -> Result<(),  Error> {
                     info!("No previous value for the key provided.");
                 }
             }
+        },
+        Command::Get { tree, key } => {
+            let val = async move { 
+                let resp = client.get(context::current(), tree, key.as_bytes().to_vec()).await;
+                resp
+            }.await??;
+            match val {
+                Some(v) => {
+                    info!("{}", String::from_utf8(v).unwrap()); },
+                _ =>  { info!("No previous value for the key provided."); },
+            }
+        },
 
-        }
     }
     // Let logger finish up
     sleep(Duration::from_micros(1)).await;

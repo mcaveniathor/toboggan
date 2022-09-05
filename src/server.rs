@@ -89,7 +89,7 @@ impl Database for DbServer {
 
     type RemoveFut = Ready<Result<Option<Vec<u8>>, Error>>;
     #[instrument(skip(self))]
-    fn remove(self, _context: context::Context,  key: Vec<u8>, tree: Option<String>) -> Self::RemoveFut {
+    fn remove(self, _context: context::Context,  tree: Option<String>, key: Vec<u8>,) -> Self::RemoveFut {
         let tree_ref: &sled::Tree;
         let tree_owned: sled::Tree;
         match &tree {
@@ -115,8 +115,8 @@ impl Database for DbServer {
                 Err(e) => Err(e.into())
             }
         )
-
     }
+
 }
 
 
