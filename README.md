@@ -6,8 +6,9 @@
 [![Crates.io](https://img.shields.io/crates/l/toboggan)](https://lbesson.mit-license.org)
 
 ## Description
-Toboggan is an RPC-based key/value database client and server system built on Google's tarpc library and the sled embedded database. This crate contains client and server binaries using Bincode serialization over TCP, *as well as* a library with the traits, boilerplate, stubs, and utilities to integrate the transport and business logic of your choosing with the RPC interface and server functionality provided by the crate.
+Toboggan is an RPC-based key/value database client and server system built on Google's [tarpc](https://github.com/google/tarpc) library and the [sled](https://github.com/spacejam/sled) embedded database. This crate contains client and server binaries using Bincode serialization over TCP, *as well as* a library with the traits, boilerplate, stubs, and utilities to integrate the transport and business logic of your choosing with the RPC interface and server functionality provided by the crate.
 
+**NOTE** Toboggan and a number of its key dependencies are under active development and should be considered unstable for the time being.
 
 ## Features
 At time of writing, the following operations are supported, with more to come soon.
