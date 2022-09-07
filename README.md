@@ -3,6 +3,7 @@
 [![Rust Report Card](https://rust-reportcard.xuri.me/badge/github.com/mcaveniathor/toboggan)](https://rust-reportcard.xuri.me/report/github.com/mcaveniathor/toboggan)
 [![Crates.io](https://img.shields.io/crates/v/toboggan)](https://crates.io/crates/toboggan)
 [![docs.rs](https://img.shields.io/docsrs/toboggan)](https://docs.rs/crate/toboggan/latest)
+[![Rust](https://github.com/mcaveniathor/toboggan/actions/workflows/rust.yml/badge.svg)](https://github.com/mcaveniathor/toboggan/actions/workflows/rust.yml)
 [![Crates.io](https://img.shields.io/crates/l/toboggan)](https://lbesson.mit-license.org)
 
 ## Description
