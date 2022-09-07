@@ -15,6 +15,21 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Rust Cache
+      # You may pin to the exact commit or the version.
+      # uses: Swatinem/rust-cache@6720f05bc48b77f96918929a9019fb2203ff71f8
+      uses: Swatinem/rust-cache@v2.0.0
+      with:
+      # An additional cache key that is stable over multiple jobs
+      shared-key: # optional
+      # An additional key for the cache
+      key: # optional
+      # Additional environment variables to include in the cache key, separated by spaces
+      env-vars: # optional
+      # Paths to multiple Cargo workspaces and their target directories, separated by newlines
+      workspaces: # optional
+      # Cache even if the build fails. Defaults to false
+      cache-on-failure: true # optional
     - uses: actions/checkout@v3
     - name: Build
       run: cargo build --verbose
