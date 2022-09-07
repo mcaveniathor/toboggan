@@ -26,19 +26,6 @@ jobs:
       contents: read
       security-events: write
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Install Rust toolchain
-        uses: actions-rs/toolchain@16499b5e05bf2e26879000db0c1d13f7e13fa3af #@v1
-        with:
-          profile: minimal
-          toolchain: nightly
-          components: clippy
-          override: true
-
-      - name: Install required cargo
-        run: cargo install clippy-sarif sarif-fmt
       - name: Rust Cache
         # You may pin to the exact commit or the version.
         # uses: Swatinem/rust-cache@6720f05bc48b77f96918929a9019fb2203ff71f8
@@ -54,6 +41,21 @@ jobs:
           workspaces: # optional
           # Cache even if the build fails. Defaults to false
           cache-on-failure: true # optional
+          
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install Rust toolchain
+        uses: actions-rs/toolchain@16499b5e05bf2e26879000db0c1d13f7e13fa3af #@v1
+        with:
+          profile: minimal
+          toolchain: nightly
+          components: clippy
+          override: true
+
+      - name: Install required cargo
+        run: cargo install clippy-sarif sarif-fmt
+    
 
       - name: Run rust-clippy
         run:
